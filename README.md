@@ -32,8 +32,6 @@ CommonJS works too:
 const { stripRtf } = require('rtf-to-text');
 ```
 
-A default export is available if you prefer it: `import stripRtf from 'rtf-to-text'`.
-
 ## What it handles
 
 - **Passthrough** — input that isn't RTF (doesn't start with `{\rtf`) is returned unchanged, so you can run it over a mixed pile of `.rtf` and `.txt` without sniffing each one first.

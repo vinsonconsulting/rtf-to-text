@@ -155,5 +155,3 @@ export function stripRtf(input: string): string {
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 }
-
-export default stripRtf;

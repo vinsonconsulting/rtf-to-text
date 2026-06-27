@@ -101,10 +101,4 @@ It was a \\b very\\b0  good cat.\\par
     const rtf = '{\\rtf1   Hello   }';
     expect(stripRtf(rtf)).toBe('Hello');
   });
-
-  it('exposes the function as a default export too', async () => {
-    const mod = await import('../src/index');
-    expect(mod.default).toBe(stripRtf);
-    expect(mod.default('{\\rtf1 hi}')).toBe('hi');
-  });
 });
