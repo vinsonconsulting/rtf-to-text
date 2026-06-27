@@ -35,7 +35,7 @@ const { stripRtf } = require('rtf-to-text');
 ## What it handles
 
 - **Passthrough** — input that isn't RTF (doesn't start with `{\rtf`) is returned unchanged, so you can run it over a mixed pile of `.rtf` and `.txt` without sniffing each one first.
-- **Control groups** — `fonttbl`, `colortbl`, `stylesheet`, `info`, `pict`, and friends are skipped wholesale, not leaked as noise.
+- **Control groups** — `fonttbl`, `colortbl`, `stylesheet`, `info`, `pict`, and friends are skipped wholesale, not leaked as noise — including any `\*`-marked ignorable destination (e.g. `\*\generator`, `\*\themedata`) that Word and friends sprinkle through real documents.
 - **Unicode escapes** — `\uN?` decoded properly, including negative (16-bit-wrapped) values, and the trailing ANSI replacement char is consumed.
 - **Structure** — `\par` / `\line` → newlines, `\tab` → tab; runs of blank lines are collapsed and the result is trimmed.
 - **Escaped literals & punctuation** — `\{`, `\}`, `\\`, plus smart quotes, bullet, en/em dashes mapped to their real characters.

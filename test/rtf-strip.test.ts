@@ -52,6 +52,20 @@ describe('stripRtf', () => {
     expect(stripRtf(rtf)).toBe('Document text');
   });
 
+  it('skips \\* ignorable destinations like \\*\\generator', () => {
+    expect(stripRtf('{\\rtf1{\\*\\generator Riched20 10.0.19041}Hello}')).toBe('Hello')
+  })
+
+  it('skips \\* destinations alongside named ones', () => {
+    expect(
+      stripRtf('{\\rtf1{\\*\\themedata 0102030405}{\\fonttbl{\\f0 Arial;}}Body text}')
+    ).toBe('Body text')
+  })
+
+  it('skips nested groups inside a \\* destination', () => {
+    expect(stripRtf('{\\rtf1{\\*\\datastore {\\nested junk}}Visible}')).toBe('Visible')
+  })
+
   it('handles Unicode escapes', () => {
     // \u233? is é (Latin small e with acute), ? is ANSI replacement
     const rtf = '{\\rtf1 caf\\u233?}';

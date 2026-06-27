@@ -6,7 +6,8 @@
  * it is safe to run over a mixed pile of `.rtf` and `.txt` without sniffing first.
  *
  * Handles:
- * - RTF group skipping (fonttbl, colortbl, stylesheet, info, pict, …)
+ * - RTF group skipping (fonttbl, colortbl, stylesheet, info, pict, …) plus any
+ *   \* ignorable destination (e.g. \*\generator, \*\themedata)
  * - Unicode escapes (\uN?), including negative (16-bit-wrapped) values
  * - Paragraph / line / tab breaks (\par, \line, \tab)
  * - Escaped literals (\{, \}, \\) and common punctuation (smart quotes, bullet, dashes)
@@ -36,7 +37,9 @@ export function stripRtf(input: string): string {
       if (skipDepth < 0) {
         // Peek ahead for group type
         const ahead = input.slice(i + 1, i + 30);
-        if (SKIP_GROUPS.test(ahead)) {
+        // Skip named destinations, and any \* ignorable destination (RTF's
+        // "skip this whole group if you don't recognize it" marker).
+        if (SKIP_GROUPS.test(ahead) || /^\\\*/.test(ahead)) {
           skipDepth = depth;
         }
       }
