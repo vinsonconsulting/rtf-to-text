@@ -8,7 +8,7 @@ comes out wrong.
 ```bash
 npm install
 npm test          # vitest
-npm run build     # tsup → dist/ (ESM + CJS + types)
+npm run build     # tsdown → dist/ (ESM + CJS + types)
 npm run typecheck # tsc --noEmit
 ```
 
