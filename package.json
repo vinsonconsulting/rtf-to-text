@@ -1,0 +1,56 @@
+{
+  "name": "rtf-to-text",
+  "version": "0.1.0",
+  "description": "Strip RTF to clean plaintext. Zero dependencies, handles Unicode escapes, control groups, smart quotes, and plain-text passthrough.",
+  "keywords": [
+    "rtf",
+    "rich-text-format",
+    "rtf-to-text",
+    "plaintext",
+    "strip",
+    "convert",
+    "parser",
+    "text-extraction",
+    "zero-dependency"
+  ],
+  "license": "Apache-2.0",
+  "author": "Jim Vinson <jim@vinson.org> (https://jimvinson.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinsonconsulting/rtf-to-text.git"
+  },
+  "homepage": "https://github.com/vinsonconsulting/rtf-to-text#readme",
+  "bugs": {
+    "url": "https://github.com/vinsonconsulting/rtf-to-text/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.3",
+    "vitest": "^4.0.18"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
