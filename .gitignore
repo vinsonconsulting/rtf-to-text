@@ -4,3 +4,6 @@ coverage/
 *.log
 .DS_Store
 .vitest/
+
+# Point-in-time status reports (parked in Drive, not tracked)
+REPO_STATE.md
