@@ -1,6 +1,6 @@
 {
   "name": "rtf-to-text",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Strip RTF to clean plaintext. Zero dependencies, handles Unicode escapes, control groups, smart quotes, and plain-text passthrough.",
   "keywords": [
     "rtf",
